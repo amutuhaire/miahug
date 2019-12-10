@@ -1,0 +1,56 @@
+.logo {
+    height: 180px;
+}
+
+.logo img {
+    height: inherit;
+    width: inherit;
+}
+
+.project-wrap {
+    position: relative;
+}
+
+.project-wrap .topp {
+    top: 14.36em;
+    padding: 5px 15px;
+    position: absolute;
+    left: 0;
+    background: #1A69AA;
+    color: white;
+    border-radius: 0 10px 0 0;
+    width: 60%;
+    height: 40px;
+}
+
+.project-wrap .text span {
+    font-size: 18px;
+}
+
+.view-more {
+    font-size: 18px;
+}
+
+.view-more:hover {
+    text-decoration: underline;
+}
+
+.hostel-img img,
+.room-img img {
+    width: inherit;
+    height: inherit;
+}
+
+.col-md-6.room-img {
+    height: 250px;
+}
+
+h6 {
+    color: #928787;
+}
+
+.project-destination .text h3 {
+    background: #1a69aa91;
+    text-align: center;
+    border-radius: 6px;
+}
