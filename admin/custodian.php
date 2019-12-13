@@ -34,10 +34,26 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
+            <h1 class="h3 mb-0 text-gray-800">Custodian</h1></div>
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
+          <form action="">
+        firstname :<br>
+        <input type="text" name="firstname" value="">
+        <br> lastname:<br>
+        <input type="text" name="lastname" value="">
+        <br><br>
+
+        <input type="radio" name="gender" value="male" checked> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other<br><br> E-mail:
+        <input type="email" name="email"><br><br> Telephone:
+        <input type="tel" name="usrtel"><br><br> User password:<br>
+        <input type="password" name="psw"><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
           
                       </div>
           <!-- End of row -->  

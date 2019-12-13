@@ -34,11 +34,18 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
+            <h1 class="h3 mb-0 text-gray-800">University</h1></div>
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-          
+          <form action="">
+        University name:<br>
+        <input type="text" name="firstname" value="">
+        <br> Upload picture:<br>
+        <input type="text" name="picture" value="">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
                       </div>
           <!-- End of row -->  
         </div>

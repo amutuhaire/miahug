@@ -34,11 +34,25 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
+            <h1 class="h3 mb-0 text-gray-800">Hostel</h1></div>
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-          
+          <form action="">
+        Hostel Name:<br>
+        <input type="text" name="firstname" value="">
+        <br> University:<br>
+        <input type="text" name="lastname" value="">
+        <br><br> Hostel Location:<br>
+        <input type="text" name="location" value="">
+        <br><br> Hostel Rooms:<br>
+        <input type="number" name="room" value="">
+        <br><br> Hostel image:<br>
+        <input type="text" name="img" value="">
+        <br><br>
+
+        <input type="submit" value="Submit">
+    </form>
                       </div>
           <!-- End of row -->  
         </div>

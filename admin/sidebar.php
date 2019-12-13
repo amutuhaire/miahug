@@ -43,29 +43,29 @@
 
     <!-- Nav Item - Link1 -->
     <?php
-        checkActive("link1",$GLOBALS['activeTab']);
+        checkActive("university",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="">
+    <a class="nav-link" href="university.php">
         <i class="fas fa-fw fa-user-edit"></i>
-        <span>Link 1</span></a>
+        <span>university</span></a>
     </li>
 
     <!-- Nav Item - Link2 -->
     <?php
-        checkActive("link2",$GLOBALS['activeTab']);
+        checkActive("hostel",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="">
+    <a class="nav-link" href="hostel.php">
         <i class="fas fa-fw fa-table"></i>
-        <span>Link 2</span></a>
+        <span>Hostel</span></a>
     </li>
 
     <!-- Nav Item - Link3 -->
     <?php
-        checkActive("link3",$GLOBALS['activeTab']);
+        checkActive("custodian",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="">
+    <a class="nav-link" href="custodian.php">
         <i class="fas fa-fw fa-sad-cry"></i>
-        <span>Link 3</span></a>
+        <span>Custodian</span></a>
     </li>
 
     <!-- Nav Item - Link3 -->
