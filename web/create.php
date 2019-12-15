@@ -1,7 +1,51 @@
+<?php 
+        include_once("userAccount.php");
+        
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        // if(isset($_GET[]))
+    if(isset($_POST['submit'])){
+      $fname = $_POST['fname'];
+      $lname = $_POST['lname'];
+      $fullname = $fname." ".$lname;
+      $gender = $_POST['gender'];
+
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        $tel = $_POST['tel'];
+        $pass = md5($pass);
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "miah";
+        echo md5("pass");
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $sql = "INSERT INTO `resident` (`date_created`,`full_name`, `gender`, `email`, `telephone`, `password`, `is_student`, `room_occupation_status`) VALUES ( CURRENT_TIMESTAMP, '$fullname','$gender','$email','$tel','$pass','1','NONE')";
+        $result = $conn->query($sql);
+            if($result){
+              header("Location: ../web/book.php");
+            }  else{
+                echo "not logged";
+            }          
+
+        unset($_POST['submit']);
+        $conn->close();
+    }
+        
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Book a Room</title>
+    <title>Create Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -25,6 +69,9 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    	<!-- icon -->
+	<link rel="shortcut icon" href="img/miahLogo.png" >
   
     
     
@@ -51,17 +98,17 @@ form[role=login] {
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container"><a class="navbar-brand" href="index.html">MoveIn</a>
+	    <div class="container"><a class="navbar-brand" href="index.php">MiahUg</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link" style="color:black;">Home</a></li>
-	          <li class="nav-item"><a href="universities.html" class="nav-link" style="color:black;">Universities</a></li>
+	          <li class="nav-item"><a href="index.php" class="nav-link" style="color:black;">Home</a></li>
+	          <li class="nav-item"><a href="universities.php" class="nav-link" style="color:black;">Universities</a></li>
 	          
-	          <li class="nav-item"><a href="" class="nav-link" style="color:black;"><span class="icon icon-user-circle-o"></span>&nbsp;User</a></li>
+	          <li class="nav-item cta"><a href="login.php" class="nav-link">Login/Signup</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -69,29 +116,46 @@ form[role=login] {
     <!-- END nav -->
     
     
-    <section class="ftco-section">
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
     	<div class="container">
 	    	<div class="row">
-                <div class="col-md-6 detail-box">
-                    <div class="row col-12"><h2>Your Details</h2></div>
-                    <div class="row col-12">Guma | guma101@gmail.com | +256 780 110 110</div>
-                </div>
-                <div class="col-md-6">
-                    
-                </div>
+					<div class="col-md-12"> </div>
 	    	</div>
 	    </div>
     </section>
 
    
+    <section class="container">
+        <section class="login-form">
+          <form method="post" action="" role="login">
+            <img src="img/miahLogo.png" class="img-responsive" alt="" />
+            <h1 class="text-center">Welcome to MiahUg</h1>
+            <input type="text" name="fname" placeholder="First Name" required class="form-control input-lg" />
+            <input type="text" name="lname" placeholder="Last Name" required class="form-control input-lg" />
+            <input type="email" name="email" placeholder="Email" required class="form-control input-lg" />
+            <input type="text" name="tel" placeholder="Telephone" required class="form-control input-lg" />
+            <input type="password" name="password" placeholder="password" required class="form-control input-lg" />
+            <input type="password" name="conform_pasword" placeholder="Conform Password" required class="form-control input-lg" />
+
+            <select name="gender" placeholder="gender" required class="form-control input-lg">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            </select>
+            <button type="submit" name="submit" class="btn btn-lg btn-primary btn-block">Continue</button>
+            <div>
+                <a href="login.php">Already have an account? Login</a>
+              </div>
+          </form>
+        </section>
+    </section>
     
 <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
   <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-md">
             <div class="ftco-footer-widget">
-              <h2 class="ftco-heading-2">MoveIn</h2>
-              <p>You don't have to move up and about to find yourself a good hostel anymore. MoveIn is here to cater for your hostel needs without breaking a sweat.</p>
+              <h2 class="ftco-heading-2">MiahUg</h2>
+              <p>You don't have to move up and about to find yourself a good hostel anymore. MiahUg is here to cater for your hostel needs without breaking a sweat.</p>
               <p>Check out our social media platforms </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
                 <li class="ftco-animate"><a ><span class="icon-twitter"></span></a></li>
@@ -108,7 +172,7 @@ form[role=login] {
 	                <li><span class="icon icon-map-marker"></span><span class="text">CoCIS, Level 5<br>
 	                  Makerere University</span></li>
 	                <li><a ><span class="icon icon-phone"></span><span class="text">+256 392 929 210</span></a></li>
-	                <li><a ><span class="icon icon-envelope"></span><span class="text">info@movein.com</span></a></li>
+	                <li><a ><span class="icon icon-envelope"></span><span class="text">info@MiahUg.com</span></a></li>
 	              </ul>
 	            </div>
             </div>
@@ -143,5 +207,12 @@ form[role=login] {
   <script src="js/main.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     
+  <script>
+      $(document).ready(function () {
+        $("[name = go]").click(function () { 
+          location.href = "book.php";
+        });
+      });
+  </script>
   </body>
 </html>

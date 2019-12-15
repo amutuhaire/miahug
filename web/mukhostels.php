@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "miah";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +42,9 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/move-in.css">
+
+    	<!-- icon -->
+	<link rel="shortcut icon" href="img/miahLogo.png" >
     
     <!--  Extra Fonts -->
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -34,17 +54,17 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container"><a class="navbar-brand" href="index.html">MoveIn</a>
+	    <div class="container"><a class="navbar-brand" href="index.php">Miah</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="universities.html" class="nav-link">Universities</a></li>
+	          <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="universities.php" class="nav-link">Universities</a></li>
 	          
-	          <li class="nav-item cta"><a href="login.html" class="nav-link">Login/Signup</a></li>
+	          <li class="nav-item cta"><a href="login.php" class="nav-link">Login/Signup</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -62,23 +82,47 @@
     <section class="ftco-section ftco-no-pt">
         <div class="container">
             <div class="row">
-<div class="col-md-4 ftco-animate">
-   		  <div class="project-wrap">
-            <a href="joe.html">
-                <div class="d-flex align-items-center mb-4 topp">
-                  olympia
-</div>
-            </a>
-        			<a href="joe.html" class="img" style="background-image: url(img/olympia.jpg);"></a>
-        			<div class="text p-4">
-        			  <p class="location"><span class="icon icon-map-marker"></span> Wandegeya<br>
-        			    <span class="zmdi zmdi-male-female"></span> Male and Female</p>
-        			  <ul>
-        			    <li><span class="no-rooms">30</span>Available Rooms</li>
-      			    </ul>
-        			</div>
-        		</div>
-        	</div>
+              <?php
+                                
+                  $sql = "SELECT * FROM hostel WHERE university_id='1'";
+
+                  $result = $conn->query($sql);
+                      if($result->num_rows>0){
+                          while($data =$result->fetch_assoc()){
+                            $hostel_id = $data['id'];
+                            $hostel_name =$data['name'];
+                            ?>
+                            <div class="col-md-4 ftco-animate">
+                            <div class="project-wrap">
+                             <a href="joe.php">
+                                 <div class="d-flex align-items-center mb-4 topp">
+                                   <?php echo $hostel_name; ?>
+                                 </div>
+                             </a>
+                               <a href="hostel.php?<?php echo "hostel_id=".$hostel_id."&hostel_name=".$hostel_name; ?>" class="img" style="background-image: url(img/olympia.jpg);"></a>
+                               <div class="text p-4">
+                                 <p class="location"><span class="icon icon-map-marker"></span> <?php echo $data['location'];?><br>
+                                   <span class="zmdi zmdi-male-female"></span> Male and Female</p>
+                                 <ul>
+                                   <?php
+                                  $sqlRooms = "SELECT * FROM room  WHERE hostel_id='$hostel_id' AND occupation_status='VACCANT'";
+                                   $result1 = $conn->query($sqlRooms);
+                                   ?>
+                                   <li><span class="no-rooms"><?php echo $result1->num_rows; ?></span>Available Rooms</li>
+                                 </ul>
+                               </div>
+                             </div>
+                         </div>
+                         <?php
+                          }
+
+                      }  else{
+
+                      }          
+                  $conn->close();
+                                
+              ?>
+
         	<div class="col-md-4 ftco-animate">
         		<div class="project-wrap">
                 <a href="aryan.html">
@@ -121,8 +165,8 @@
         <div class="row mb-5 justify-content-center">
           <div class="col-md">
             <div class="ftco-footer-widget">
-              <h2 class="ftco-heading-2">MoveIn</h2>
-              <p>You don't have to move up and about to find yourself a good hostel anymore. MoveIn is here to cater for your hostel needs without breaking a sweat.</p>
+              <h2 class="ftco-heading-2">Miah</h2>
+              <p>You don't have to move up and about to find yourself a good hostel anymore. Miah is here to cater for your hostel needs without breaking a sweat.</p>
               <p>Check out our social media platforms </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
                 <li class="ftco-animate"><a ><span class="icon-twitter"></span></a></li>

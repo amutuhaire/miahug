@@ -1,7 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedIn'])){
+  $full_name = $_SESSION['full_name'];
+  $email = $_SESSION['email'];
+  $telephone = $_SESSION['telephone'];
+
+}else{
+  $full_name = "User";
+  $email = " ";
+  $telephone = " ";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Create Account</title>
+    <title>Book a Room</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -25,6 +39,9 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+    	<!-- icon -->
+	<link rel="shortcut icon" href="img/miahLogo.png" >
   
     
     
@@ -51,17 +68,17 @@ form[role=login] {
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container"><a class="navbar-brand" href="index.html">MiahUg</a>
+	    <div class="container"><a class="navbar-brand" href="index.php">Miah</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link" style="color:black;">Home</a></li>
-	          <li class="nav-item"><a href="universities.html" class="nav-link" style="color:black;">Universities</a></li>
+	          <li class="nav-item"><a href="index.php" class="nav-link" style="color:black;">Home</a></li>
+	          <li class="nav-item"><a href="universities.php" class="nav-link" style="color:black;">Universities</a></li>
 	          
-	          <li class="nav-item cta"><a href="login.html" class="nav-link">Login/Signup</a></li>
+	          <li class="nav-item"><a href="" class="nav-link" style="color:black;"><span class="icon icon-user-circle-o"></span>&nbsp;<?php echo $full_name;?></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -69,39 +86,29 @@ form[role=login] {
     <!-- END nav -->
     
     
-    <section class="ftco-section ftco-no-pb ftco-no-pt">
+    <section class="ftco-section">
     	<div class="container">
 	    	<div class="row">
-					<div class="col-md-12"> </div>
+                <div class="col-md-6 detail-box">
+                    <div class="row col-12"><h2>Your Details</h2></div>
+                    <div class="row col-12"><?php echo $full_name; ?> | <?php echo $email; ?> | <?php echo $telephone; ?></div>
+                </div>
+                <div class="col-md-6">
+                    
+                </div>
 	    	</div>
 	    </div>
     </section>
 
    
-    <section class="container">
-        <section class="login-form">
-          <form method="post" action="" role="login">
-            <img src="img/miahLogo.png" class="img-responsive" alt="" />
-            <h1 class="text-center">Welcome to MiahUg</h1>
-            <input type="text" name="fname" placeholder="First Name" required class="form-control input-lg" />
-            <input type="text" name="lname" placeholder="Last Name" required class="form-control input-lg" />
-            <input type="email" name="email" placeholder="Email" required class="form-control input-lg" />
-            <input type="password" name="password" placeholder="Password" required class="form-control input-lg" />
-            <button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Continue</button>
-            <div>
-                <a href="login.html">Already have an account? Login</a>
-              </div>
-          </form>
-        </section>
-    </section>
     
 <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
   <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-md">
             <div class="ftco-footer-widget">
-              <h2 class="ftco-heading-2">MiahUg</h2>
-              <p>You don't have to move up and about to find yourself a good hostel anymore. MiahUg is here to cater for your hostel needs without breaking a sweat.</p>
+              <h2 class="ftco-heading-2">Miah</h2>
+              <p>You don't have to move up and about to find yourself a good hostel anymore. Miah is here to cater for your hostel needs without breaking a sweat.</p>
               <p>Check out our social media platforms </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
                 <li class="ftco-animate"><a ><span class="icon-twitter"></span></a></li>
@@ -118,7 +125,7 @@ form[role=login] {
 	                <li><span class="icon icon-map-marker"></span><span class="text">CoCIS, Level 5<br>
 	                  Makerere University</span></li>
 	                <li><a ><span class="icon icon-phone"></span><span class="text">+256 392 929 210</span></a></li>
-	                <li><a ><span class="icon icon-envelope"></span><span class="text">info@MiahUg.com</span></a></li>
+	                <li><a ><span class="icon icon-envelope"></span><span class="text">info@miah.com</span></a></li>
 	              </ul>
 	            </div>
             </div>
@@ -153,12 +160,5 @@ form[role=login] {
   <script src="js/main.js"></script>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     
-  <script>
-      $(document).ready(function () {
-        $("[name = go]").click(function () { 
-          location.href = "book.html";
-        });
-      });
-  </script>
   </body>
 </html>
