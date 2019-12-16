@@ -38,11 +38,13 @@
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-          <form action="">
+          <form action="reg.php" method="POST">
         firstname :<br>
         <input type="text" name="firstname" value="">
         <br> lastname:<br>
         <input type="text" name="lastname" value="">
+        <br>Hostel<br>
+        <input type="text" name="hostel">
         <br><br>
 
         <input type="radio" name="gender" value="male" checked> Male<br>
@@ -51,6 +53,7 @@
         <input type="email" name="email"><br><br> Telephone:
         <input type="tel" name="usrtel"><br><br> User password:<br>
         <input type="password" name="psw"><br><br>
+
 
         <input type="submit" value="Submit">
     </form>
