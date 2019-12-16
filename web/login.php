@@ -1,12 +1,63 @@
+<?php 
+        session_start();
+        if(isset($_SESSION['loggedIn'])){
+            header("location: ../web/book.php");
+        }
+        include_once("userAccount.php");
+        
+    if($_SERVER['REQUEST_METHOD']=="POST"){
+        // if(isset($_GET[]))
+    if(isset($_POST['submit'])){
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        $pass = md5($pass);
+        
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "miah";
+        
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        
+        $sql = "SELECT * FROM resident WHERE email='$email' AND password='$pass'";
+        $result = $conn->query($sql);
+            if($result->num_rows>0){
+                $data = $result->fetch_assoc();
+                $_SESSION['email']= $email;
+                $_SESSION['full_name']= $data['full_name'];
+                $_SESSION['telephone']= $data['telephone'];
+
+                //set loggedin session
+                $_SESSION['loggedIn'] =true;
+                header("Location: ../web/book.php");
+            }  else{
+
+            }          
+
+        unset($_POST['submit']);
+        $conn->close();
+    }
+        
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Available Universities</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
 
@@ -26,6 +77,10 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 
+    	<!-- icon -->
+	<link rel="shortcut icon" href="img/miahLogo.png" >
+
+
 
     <!--  Extra Fonts -->
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -40,22 +95,30 @@
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
             padding: 0;
         }
+        
+        body {
+            background: unset;
+        }
+        
+        form[role=login] {
+            box-shadow: 0 0 7px #00000059;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container"><a class="navbar-brand" href="index.html">MiahUg</a>
+        <div class="container"><a class="navbar-brand" href="index.php">MiahUg</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="index.html" class="nav-link" style="color:#000000b8;">Home</a></li>
-                    <li class="nav-item active"><a href="universities.html" class="nav-link">Universities</a></li>
+                    <li class="nav-item"><a href="index.php" class="nav-link" style="color:black;">Home</a></li>
+                    <li class="nav-item"><a href="universities.php" class="nav-link" style="color:black;">Universities</a></li>
 
-                    <li class="nav-item cta"><a href="login.html" class="nav-link">Login/Signup</a></li>
+                    <li class="nav-item cta"><a href="login.php" class="nav-link">Login/Signup</a></li>
                 </ul>
             </div>
         </div>
@@ -72,60 +135,31 @@
     </section>
 
 
-    <section class="ftco-section mt-3">
-        <div class="container">
-            <div class="row justify-content-center pb-4">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Available Universities</h2>
+    <section class="container">
+        <section class="login-form">
+            <form method="post" action="" role="login">
+                <img src="img/miahLogo.png" class="img-responsive" alt="" />
+                <h1 class="text-center">Please Login to continue</h1>
+                <input type="email" name="email" placeholder="Email" required class="form-control input-lg" />
+                <input type="password" name="password" placeholder="Password" required class="form-control input-lg" />
+                <div>
+                    <a href="">Forgot your password?</a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="mukhostels.html" class="img" style="background-image: url(img/muk.jpg);"></a>
-                        <div class="text p-4">
-                            <h3><a href="mukhostels.html">Makerere</a></h3>
-                            <p class="location"><span class="icon icon-map-marker"></span> University Road, Kampala</p>
-                            <ul>
-                                <li><span class="icon icon-building-o"></span>30 Hostels</li>
-                            </ul>
-                        </div>
-                    </div>
+                <button type="submit" name="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                <div>
+                    <a href="create.php">Create Account</a>
                 </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="kyuhostels.html" class="img" style="background-image: url(img/kyu.jpg);"></a>
-                        <div class="text p-4">
-                            <h3><a href="kyuhostels.html">Kyambogo</a></h3>
-                            <p class="location"><span class="icon icon-map-marker"></span> Kampala</p>
-                            <ul>
-                                <li><span class="icon icon-building-o"></span>20 Hostels</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="mubshostels.html" class="img" style="background-image: url(img/Mubs.jpg);"></a>
-                        <div class="text p-4">
-                            <h3><a href="mubshostels.html">MUBS</a></h3>
-                            <p class="location"><span class="icon icon-map-marker"></span> Port Bell Rd, Kampala</p>
-                            <ul>
-                                <li><span class="icon icon-building-o"></span>15 Hostels</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </form>
+        </section>
     </section>
+
     <footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);">
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-md">
                     <div class="ftco-footer-widget">
                         <h2 class="ftco-heading-2">MiahUg</h2>
-                        <p>You don't have to move up and about to find yourself a good hostel anymore. MiahUg is here to cater for your hostel needs without breaking a sweat.</p>
+                        <p>You don't have to move up and about to find yourself a good hostel anymore.MiahUg is here to cater for your hostel needs without breaking a sweat.</p>
                         <p>Check out our social media platforms </p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
                             <li class="ftco-animate"><a><span class="icon-twitter"></span></a></li>
@@ -175,7 +209,14 @@
     <script src="js/scrollax.min.js"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
+    <script>
+        // $(document).ready(function() {
+        //     $("[name = go]").click(function() {
+        //         location.href = "book.php";
+        //     });
+        // });
+    </script>
 </body>
-
 </html>
