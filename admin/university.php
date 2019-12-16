@@ -38,14 +38,14 @@
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-          <form action="">
-        University name:<br>
-        <input type="text" name="firstname" value="">
-        <br> Upload picture:<br>
-        <input type="text" name="picture" value="">
-        <br><br>
-        <input type="submit" value="Submit">
-    </form>
+          <form action="reg.php" method="POST" enctype="multipart/form-data">
+            University name:<br>
+            <input type="text" name="firstname" value="">
+            <br> Upload picture:<br>
+            <input type="file" name="myimage">
+            <br><br>
+            <input type="submit" name="submit_image" value="submituniversity">
+         </form>
                       </div>
           <!-- End of row -->  
         </div>
