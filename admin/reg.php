@@ -17,7 +17,15 @@ $contact = $_POST['usrtel'];
 $gender = $_POST['gender'];
 
 
-$result = mysqli_query($conn,  "insert into custodian");
+$result = "insert into custodian(Firstname, Lastname, gender, telephone, email, password, hostel) values('$fname', '$lname', '$gender', '$contact', '$email', '$pass', '$hostel')";
+if(mysqli_query($conn, $result)){
+    echo "Records added successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+}
+ 
+// Close connection
+mysqli_close($conn);
 
 
 
