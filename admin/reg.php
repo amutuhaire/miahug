@@ -33,8 +33,9 @@ if (isset($_POST['submitcustodian'])) {
 	
 }
 // registering university
-elseif (isset($_POST[''])) {
-	$name = "";$_POST['']
+elseif (isset($_POST['Register University'])) {
+	$name = "";
+	$name = $_POST['Uname'];
 	$imagename=$_FILES["myimage"]["name"]; 
 
 	//Get the content of the image and then add slashes to it 

@@ -1,13 +1,9 @@
 <!-- Include unchanging header -->
 <?php
   include("header.php");
-
-include_once 'controller.php';
-$result = mysqli_query($conn,  "select * from hostel");
 ?>
 <!-- End of unchanging header -->
-<title>Resident data</title>
-  <link rel="stylesheet" type="text/css" href="table.css">
+
 </head>
 <body id="page-top">
 
@@ -38,50 +34,12 @@ $result = mysqli_query($conn,  "select * from hostel");
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <table  id="row" align="center" border="1px" style="300px;">
-    <tr>
-      <th colspan="6"><h2>hostel data</h2></th>
-    </tr>
-    <tr>
-      <th>ID</th>
-      <th>HOSTEL NAME</th>
-      <th>LOCATION</th>
-      <th>NO.of FLOORS</th>
-      <th>NO. of ROOMS</th>
-      <th>CUSTODIAN NAME</th>
-      <th>UNIVERSITY ID</th>
-     
-    </tr>
-    <?php
-      while ($rows=mysqli_fetch_assoc($result)) {
-    ?>
-        <tr>
-          <td><?php echo $rows['id']; ?></td>
-          <td><?php echo $rows['name']; ?></td>
-          <td><?php echo $rows['location']; ?></td>
-          <td><?php echo $rows['num_floors']; ?></td>
-          <td><?php echo $rows['num_rooms']; ?></td>
-          <td><?php echo $rows['cust_name']; ?></td>
-          <td><?php echo $rows['university_id']; ?></td>
-
-        </tr>
-    <?php
-      }
-    ?>
-
-  </table>
-
-
-
-
-
-
-          </div>
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1></div>
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-            
-          </div>
+          
+                      </div>
           <!-- End of row -->  
         </div>
         <!-- End of container-fluid -->

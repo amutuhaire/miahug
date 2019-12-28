@@ -38,20 +38,21 @@
 
           <!-- Content Row --> <!-- Put the content inside row-->
           <div class="row">
-          <form action="">
-        Hostel Name:<br>
-        <input type="text" name="firstname" value="">
-        <br> University:<br>
-        <input type="text" name="lastname" value="">
-        <br><br> Hostel Location:<br>
-        <input type="text" name="location" value="">
-        <br><br> Hostel Rooms:<br>
-        <input type="number" name="room" value="">
-        <br><br> Hostel image:<br>
-        <input type="text" name="img" value="">
-        <br><br>
-
-        <input type="submit" value="Submit">
+    <form action="">
+      Hostel Name:<br>
+      <input type="text" name="firstname" value="">
+      <br> University:<br>
+      <input type="text" name="lastname" value="">
+      <br><br> Hostel Location:<br>
+      <input type="text" name="location" value="">
+      <br><br> Number of Floors:<br>
+      <input type="number" name="room" value="">
+      <br><br> Number of Rooms:<br>
+      <input type="number" name="room" value="">
+      <br><br> Hostel image:<br>
+      <input type="file" name="img" value="">
+      <br><br>
+      <input type="submit" value="Submit">
     </form>
                       </div>
           <!-- End of row -->  

@@ -45,27 +45,27 @@
     <?php
         checkActive("university",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="university.php">
+    <a class="nav-link" href="">
         <i class="fas fa-fw fa-user-edit"></i>
-        <span>university</span></a>
+        <span>Applications</span></a>
     </li>
 
     <!-- Nav Item - Link2 -->
     <?php
         checkActive("hostel",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="hostel.php">
+    <a class="nav-link" href="">
         <i class="fas fa-fw fa-table"></i>
-        <span>Hostel</span></a>
+        <span>room allocation</span></a>
     </li>
 
     <!-- Nav Item - Link3 -->
     <?php
         checkActive("custodian",$GLOBALS['activeTab']);
     ?>
-    <a class="nav-link" href="custodian.php">
+    <a class="nav-link" href="">
         <i class="fas fa-fw fa-sad-cry"></i>
-        <span>Custodian</span></a>
+        <span>room availability</span></a>
     </li>
 
     <!-- Nav Item - Link3 -->

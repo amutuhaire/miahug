@@ -40,11 +40,11 @@
           <div class="row">
           <form action="reg.php" method="POST" enctype="multipart/form-data">
             University name:<br>
-            <input type="text" name="firstname" value="">
+            <input type="text" name="Uname" value="">
             <br> Upload picture:<br>
             <input type="file" name="myimage">
             <br><br>
-            <input type="submit" name="submit_image" value="submituniversity">
+            <input type="submit" name="submit_image" value=" Register University">
          </form>
                       </div>
           <!-- End of row -->  

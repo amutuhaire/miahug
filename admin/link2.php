@@ -50,7 +50,7 @@ $result = mysqli_query($conn,  "select * from resident");
       <th>CONTACT</th>
       <th>PICTURE</th>
       <th>ROOM TYPE</th>
-      <th>ROOM STATUS</th>
+      <th>FLOOR NUMBER</th>
       <th>ROOM ID</th>
       <th>HOSTEL</th>
       <th>IS STUDENT</th>
